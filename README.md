@@ -1,1 +1,2 @@
-# proyecto-integrado-beta
+# Alarmovie
+## Web que te avisará de los estrenos.
