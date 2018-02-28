@@ -33,9 +33,9 @@
                     <div class='col s12 m6 l8' data-content>
                         <div class='row'>
                             <div class='col s12'><h1>$row->title</h1></div>
-                            <div class='col s12 m12 l6'><span class='orange-text'>Fecha de estreno: </span>".$row->release_date."<hr/></div>
-                            <div class='col s12 m12 l6'><span class='orange-text'>Idioma: </span>".$row->language."<hr/></div>
-                            <div class='col s12 general-synopsis'><span class='orange-text'>Sinopsis: </span><hr/>".$defaultSyn."</div>
+                            <div class='col s12 m12 l6'><span class='orange-text2'>Fecha de estreno: </span>".date("d-m-Y", strtotime($row->release_date))."<hr/></div>
+                            <div class='col s12 m12 l6'><span class='orange-text2'>Idioma: </span>".$row->language."<hr/></div>
+                            <div class='col s12 general-synopsis'><span class='orange-text2'>Sinopsis: </span><hr/>".$defaultSyn."</div>
                         </div>
                     </div>
                 </div>
@@ -57,3 +57,4 @@
             </div>
         ";
     }
+    $conex->close();

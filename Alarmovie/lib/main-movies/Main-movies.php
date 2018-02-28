@@ -18,17 +18,22 @@
             $lastUpdate = $row->last_update; // Se obtiene dicha fecha
         }
     
-        if (time() - strtotime($lastUpdate) > 5*24*3600) { // Si han pasado 5 días desde el último update
+        if (time() - strtotime($lastUpdate) > 2*24*3600) { // Si han pasado 2 días desde el último update
+
+            $todayDate = date("Y-m-d", time()); // Se almacena la fecha de hoy
+
+            $delMovies = "DELETE FROM movies WHERE release_date < '$todayDate'";
+            $delResult = setSql($conex, $delMovies);
 
             # Se obtienen los resultados desde la API para almacenar el total de páginas
-            $getGeneralMoviesPages = file_get_contents("https://api.themoviedb.org/3/discover/movie?api_key=10f2acad5e16e03e0578d21f0bcd7dce&language=es-ES&sort_by=primary_release_date.asc&primary_release_date.gte=2018-02-23");
+            $getGeneralMoviesPages = file_get_contents("https://api.themoviedb.org/3/discover/movie?api_key=10f2acad5e16e03e0578d21f0bcd7dce&language=es-ES&sort_by=primary_release_date.asc&primary_release_date.gte=$todayDate");
             $generalMoviesPages = json_decode($getGeneralMoviesPages, true); // Se decodifica el json en array asociativo
             $totalPages = $generalMoviesPages["total_pages"]; // Se almacena el nº total de páginas del resultado
 
             for ($page = 1; $page <= $totalPages; $page++) { // Se itera por cada página
 
                 # Se obtienen 20 películas desde la API por cada página
-                $getGeneralMovies = file_get_contents("https://api.themoviedb.org/3/discover/movie?api_key=10f2acad5e16e03e0578d21f0bcd7dce&language=es-ES&sort_by=primary_release_date.asc&page=$page&primary_release_date.gte=2018-02-23");
+                $getGeneralMovies = file_get_contents("https://api.themoviedb.org/3/discover/movie?api_key=10f2acad5e16e03e0578d21f0bcd7dce&language=es-ES&sort_by=primary_release_date.asc&page=$page&primary_release_date.gte=$todayDate");
                 $generalMovies = json_decode($getGeneralMovies, true); // Se decodifica el json en array asociativo
 
                 foreach($generalMovies["results"] as $gMovie) { // Se itera por cada película
@@ -48,7 +53,7 @@
                     if ($result->num_rows) { // Si la película ya está insertada
 
                         # Se actualizan las películas con la nueva información
-                        $updt = "UPDATE movies SET release_date = '$releaseDate', language = '$language', 
+                        $updt = "UPDATE movies SET title = '$title', release_date = '$releaseDate', language = '$language', 
                         synopsis = '$synopsis', poster = '$poster', popularity = '$popularity' WHERE info_id = '$infoID'";
                         
                         $resUpdt = setSql($conex, $updt);
@@ -62,12 +67,11 @@
                     }
                 }
             }
-            $todayDate = date("Y-m-d", time()); // Se almacena la fecha de hoy
 
             # Se inserta la fecha de hoy como última actualización
             $updtDate = "INSERT INTO general_update (last_update) VALUES('$todayDate')";
             $resUpdtDate = setSql($conex, $updtDate);
-            echo "Update completed on ".$todayDate;
+            echo "Update completed on ".date("d-m-Y", strtotime($todayDate));
         }
     } else if ($_GET["type"] == "getMoviesInfo") { // Si es un update específico (una película en concreto)
         
@@ -147,23 +151,24 @@
             echo "
                 <div class='row'>
                     <div class='col s6 m6 l4' data-poster><img src='$row->poster' alt='Póster'></div>
-                    <div class='col s6 m6 l8'><span class='orange-text info-close'>X</span></div>
+                    <div class='col s6 m6 l8'><span class='orange-text2 info-close'>X</span></div>
                     <div class='col s12 m6 l8' data-content>
                         <div class='row'>
                             <div class='col s12'><h1>$row->title</h1><i data-id='$movieID' class='material-icons alarm'>notifications</i></div>
-                            <div class='col s12 m12 l6'><span class='orange-text'>Fecha de estreno: </span>".$row->release_date."<hr/></div>
-                            <div class='col s12 m12 l6'><span class='orange-text'>Idioma: </span>".$row->language."<hr/></div>
-                            <div class='col s12 m12 l6'><span class='orange-text'>Director: </span>".$row->director."<hr/></div>
-                            <div class='col s12 m12 l6'><span class='orange-text'>Duración: </span>".$row->duration."<hr/></div>
+                            <div class='col s12 m12 l6'><span class='orange-text2'>Fecha de estreno: </span>".date("d-m-Y", strtotime($row->release_date))."<hr/></div>
+                            <div class='col s12 m12 l6'><span class='orange-text2'>Idioma: </span>".$row->language."<hr/></div>
+                            <div class='col s12 m12 l6'><span class='orange-text2'>Director: </span>".$row->director."<hr/></div>
+                            <div class='col s12 m12 l6'><span class='orange-text2'>Duración: </span>".$row->duration."<hr/></div>
                             <div class='row no-margin-bottom'>
-                                <div class='col s12 m12 l6'><span class='orange-text'>Productoras: </span>".$row->producer."<hr/></div>
-                                <div class='col s12 m12 l6'><span class='orange-text'>Género: </span>".$row->genre."<hr/></div>
+                                <div class='col s12 m12 l6'><span class='orange-text2'>Productoras: </span>".$row->producer."<hr/></div>
+                                <div class='col s12 m12 l6'><span class='orange-text2'>Género: </span>".$row->genre."<hr/></div>
                             </div>
-                            <div class='col s12 info-cast'><span class='orange-text'>Reparto: </span>".$row->cast."</div>
+                            <div class='col s12 info-cast'><span class='orange-text2'>Reparto: </span>".$row->cast."</div>
                         </div>
                     </div>
-                    <div class='col s12 info-synopsis'><span class='orange-text'>Sinopsis: </span><hr/>".$defaultSyn."</div>
+                    <div class='col s12 info-synopsis'><span class='orange-text2'>Sinopsis: </span><hr/>".$defaultSyn."</div>
                 </div>
             ";
         }
     }
+    $conex->close();

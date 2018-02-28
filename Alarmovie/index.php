@@ -2,9 +2,8 @@
     # Se abre sesión
     session_start();
     
-    /*if (isset($_SESSION["id"])) {
-        header("Location: main.php");
-    }*/
+    # Redirige en caso de existir ya una sesión
+    if (isset($_SESSION["id"])) header("Location: main.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -16,6 +15,7 @@
     <link type="text/css" rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.css"/>
     <link type="text/css" rel="stylesheet" href="css/materialize/css/materialize.min.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/styles.css"/>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-ui-1.12.1/jquery-ui.js"></script>
     <script src="js/scripts.js"></script>

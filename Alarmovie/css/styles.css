@@ -21,7 +21,7 @@ div#date {
 .ui-state-default, .ui-widget-content .ui-state-default {
     color: #000;
     background-color: #fff;
-    border: 1px solid #ffa500;
+    border: 1px solid #ff6000;
 }
 
 .ui-state-highlight, .ui-widget-content .ui-state-highlight {
@@ -29,7 +29,8 @@ div#date {
 }
 
 .ui-datepicker .ui-datepicker-header {
-    background-color: #ffa500;
+    background-color: #ff6000;
+    color: #fff;
 }
 
 .ui-widget.ui-widget-content {
@@ -37,26 +38,30 @@ div#date {
 }
 
 .ui-widget.ui-widget-content[role=dialog] {
-    border: 1px solid #ffa500;
+    border: 1px solid #ff6000;
 }
 
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover {
-    border: 1px solid black;
+.ui-state-hover, .ui-widget-content .ui-state-hover {
     background-color: #fff;
 }
 
+.ui-state-default.ui-state-hover {
+    border: 1px solid black;
+}
+
 .ui-dialog-titlebar {
-    background-color: #ffa500;
+    background-color: #ff6000;
+    color: #fff;
 }
 
 .ui-dialog-titlebar button:active { 
-    background-color: #ffa500;
+    background-color: #ff6000;
     color: white;
     border: 0;
 }
 
 .linked-dialog.ui-dialog .ui-dialog-content p {
-    border-bottom: 1px solid #ffa500;
+    border-bottom: 1px solid #ff6000;
     font-weight: bold;
 }
 
@@ -69,7 +74,7 @@ div#main h1 {
 
 .movie-container {
     margin-top: 30px;
-    box-shadow: 0 0 10px 2px #ffa500; 
+    box-shadow: 0 0 10px 2px #ff6000; 
 }
 
 #movies-section > div.row {
@@ -78,11 +83,11 @@ div#main h1 {
 }
 
 div.movie-container div[data-poster] {
-    padding-top: 5px;
+    padding-top: 7px;
 }
 
 div.movie-container:hover {
-    box-shadow: 0 0 30px 12px #ffa500;
+    box-shadow: 0 0 30px 12px #ff6000;
     transition: 0.5s;
     cursor: pointer;
 }
@@ -99,11 +104,11 @@ div.row.movie-card {
 div.preloader.preloader-movie {
     position: absolute;
     top: 45%;
-    left: 47%;
+    left: 48%;
 }
 
 i.material-icons.alarm {
-    color: #ffa500;
+    color: #ff6000;
     font-size: 3em;
     float: right;
     cursor: pointer;
@@ -127,7 +132,7 @@ div.general-synopsis {
 .info-movie h1 {
     font-size: 2.2rem;
     margin: 0 0 30px 0;
-    border-bottom: 2px solid #ffa500;
+    border-bottom: 2px solid #ff6000;
     display: inline-block;
 }
 
@@ -156,15 +161,24 @@ span.info-close {
     font-size: 1.5em;
 }
 
-.orange-text {
-    color: #ffa500;   
+.orange-text2 {
+    color: #ff6000;   
 }
 
 .orange-background {
-    background-color: #ffa500;
+    background-color: #ff6000;
 }
 
-/*********************** Administrador ***********************/
+.ui-widget-overlay {
+    background: #000;
+    opacity: .8;
+}
+
+nav {
+    font-weight: bold;
+}
+
+/*********************** Administración ***********************/
 
 #admin-table th {
     text-align: center;
@@ -178,24 +192,19 @@ span.info-close {
     display: none;
 }
 
-#show-more-users, #show-more-movies {
-    position: absolute;
-    left: 47vw;
+#show-more-users .preloader-wrapper, #show-more-movies .preloader-wrapper {
+    left: 48%;
 }
 
 .spinner-green, .spinner-green-only {
-    border-color: #ffa500;
+    border-color: #ff6000;
 }
 
 input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
-    border-bottom: 1px solid #ffa500;
-}
-
-input::placeholder {
-    color: black;
+    border-bottom: 1px solid #ff6000;
 }
 
 input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #ffa500;
-    box-shadow: 0 1px 0 0 #ffa500;
+    border-bottom: 1px solid #ff6000;
+    box-shadow: 0 1px 0 0 #ff6000;
 }

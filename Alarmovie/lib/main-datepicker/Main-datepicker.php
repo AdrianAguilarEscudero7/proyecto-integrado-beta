@@ -99,4 +99,3 @@
         echo json_encode($movies); // Codifica en formato json para poder enviar el array como respuesta ajax
     }
     $conex->close();
-

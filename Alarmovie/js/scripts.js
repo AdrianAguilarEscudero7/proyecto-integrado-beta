@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
     //------------------- Sign-in validaciones -------------------//
+
     let forgotPass = 0;
 
     // Envía el formulario de inicio de sesión al servidor y comprueba los datos
@@ -41,6 +42,7 @@ $(document).ready(function() {
     });
 
     //------------------- Sign-up funciones -------------------//
+
     let valid = new Array(); // Se inicializa un valid en falso por cada campo por defecto
     for (let i = 0; i < 7; i++) {
         valid[i] = false;
@@ -138,6 +140,7 @@ $(document).ready(function() {
     } 
     
     //------------------- Sign-up validaciones ------------------//
+
     $("#reg-user-id").on("input", function() {
         userValidate(); 
     });
@@ -185,6 +188,7 @@ $(document).ready(function() {
     });
 
     //------------------- Formulario modal de registro -------------------//
+
     $("#registry-form").dialog({
         title: "Registro",
         autoOpen: false,
@@ -277,6 +281,7 @@ $(document).ready(function() {
     });
 
     //------------------- Panel de administración -------------------//
+
     $("#show-more-users").html($(".preloader").html()); // Inserta el preloader
 
     // Función para mostrar los usuarios
@@ -455,7 +460,7 @@ $(document).ready(function() {
 
     // Dialog que muestra los estrenos de la fecha seleccionada
     $("#linked-movies-dialog").dialog({
-        title: "Estrenos para esta fecha:",
+        title: "Alarmas para esta fecha:",
         autoOpen: false,
         width: 300,
         maxWidth: 300,
@@ -515,7 +520,7 @@ $(document).ready(function() {
                     let dateFormat = $.datepicker.formatDate("yy-mm-dd",dt);
                     if (dateResponse["dateTrue"] === dateFormat) { // Si las fechas coinciden, pinta la celda
                         $(this).children("a").css({
-                            "background-color": "#ffa500",
+                            "background-color": "#ff6000",
                             "color": "#fff",
                             "border": "1px solid #fff"
                         });
@@ -639,4 +644,7 @@ $(document).ready(function() {
             }
         });
     });
+
+    //------------------- Barra de navegación -------------------//
+    $(".button-collapse").sideNav(); // Abre el menú desplegable para móviles
 });

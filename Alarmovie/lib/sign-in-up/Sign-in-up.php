@@ -20,7 +20,7 @@
         if (strlen($userId) > 16 || strlen($pass) > 16) {
             echo "Ha debido introducir más caracteres de lo permitido.";
         } else {
-            $sql = "SELECT * FROM users WHERE user_id = '$userId' AND password = '".base64_encode($pass)."';";
+            $sql = "SELECT * FROM users WHERE BINARY user_id = '$userId' AND password = '".base64_encode($pass)."';";
             $result = setSql($conex, $sql);
             $row = $result->fetch_object();
 
