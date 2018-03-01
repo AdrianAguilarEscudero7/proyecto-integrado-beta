@@ -617,7 +617,6 @@ $(document).ready(function() {
         }, function(response) {
             $(".preloader-movie[data-id='"+movieID+"']").hide();
             $("#info-movie-dialog").html(response);
-            $("#info-movie-dialog").dialog("open");
 
             // Consulta la vinculación del usuario con la película seleccionada
             $.post("lib/main-datepicker/Main-datepicker.php", {type: "checkUserMovie", movieID: movieID}, function(response) {
@@ -625,6 +624,8 @@ $(document).ready(function() {
                     $("i.alarm").text("notifications_off");
                 }
             });
+            
+            $("#info-movie-dialog").dialog("open");
         });
     });
     
