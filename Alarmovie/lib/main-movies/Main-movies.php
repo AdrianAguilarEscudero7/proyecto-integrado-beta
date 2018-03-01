@@ -18,10 +18,16 @@
             $lastUpdate = $row->last_update; // Se obtiene dicha fecha
         }
     
-        if (time() - strtotime($lastUpdate) > 2*24*3600) { // Si han pasado 2 días desde el último update
+        if (time() - strtotime($lastUpdate) > 24*3600) { // Si ha pasado 1 día desde el último update
 
             $todayDate = date("Y-m-d", time()); // Se almacena la fecha de hoy
 
+            # Se inserta la fecha de hoy como última actualización
+            $updtDate = "INSERT INTO general_update (last_update) VALUES('$todayDate')";
+            $resUpdtDate = setSql($conex, $updtDate);
+            echo "Update completed on ".date("d-m-Y", strtotime($todayDate));
+
+            // Elimina las películas que estén fuera de fecha
             $delMovies = "DELETE FROM movies WHERE release_date < '$todayDate'";
             $delResult = setSql($conex, $delMovies);
 
@@ -67,11 +73,6 @@
                     }
                 }
             }
-
-            # Se inserta la fecha de hoy como última actualización
-            $updtDate = "INSERT INTO general_update (last_update) VALUES('$todayDate')";
-            $resUpdtDate = setSql($conex, $updtDate);
-            echo "Update completed on ".date("d-m-Y", strtotime($todayDate));
         }
     } else if ($_GET["type"] == "getMoviesInfo") { // Si es un update específico (una película en concreto)
         
