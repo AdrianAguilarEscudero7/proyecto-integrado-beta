@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-02-2018 a las 20:26:40
+-- Tiempo de generación: 01-03-2018 a las 02:45:10
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.0.25
 
@@ -33,13 +33,6 @@ CREATE TABLE `general_update` (
   `last_update` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `general_update`
---
-
-INSERT INTO `general_update` (`update_id`, `last_update`) VALUES
-(1, '2018-02-28');
-
 -- --------------------------------------------------------
 
 --
@@ -55,21 +48,6 @@ CREATE TABLE `info_movies` (
   `genre` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `info_movies`
---
-
-INSERT INTO `info_movies` (`movie_id`, `duration`, `director`, `cast`, `producer`, `genre`) VALUES
-(78, 0, 'Kasper Skovsbøl', 'Gustav Dyekjær Giese, Rosalinde Mynster, Baard Owe, Peter Plaugborg, Rudi Køhnke, Karen-Lise Mynster, Stefan Mølholt, May Simón Lifschitz, Brigitte Christensen, Lea Gregersen', 'GOOD COMPANY FILMS', 'Historia, Drama'),
-(83, 0, 'Dany Boon', 'Dany Boon, Valérie Bonneton, Line Renaud, Pierre Richard, Laurence Arné, Guy Lecluyse, François Berléand, Juliane Lepoureau, Yan Tual, Ludovic Pinette, Oleg Eyben, Judi Beecher, Stéphane Pézérat, Eric Aladin Reibel, Thomas VBD, Antonia de Rendinger, Ludovic Pinette, Ludmila Mikhailova, Slimane Majdi, Clémence Beauxis, Silvie Laguna, Claudia Tagbo, Nathalie Blanc, Pierre Buf, Jean-Pascal Abribat, Gaetano Laury, Nicolas White, Vincent Primault, Jeanfi Janssens, Hugues Boucher, Françoise Thuries, V', 'Pathé', 'Comedia'),
-(87, 0, 'Albert Hughes', 'Kodi Smit-McPhee, Priya Rajaratnam, Leonor Varela, Jens Hultén, Natassia Malthe, Jóhannes Haukur Jóhannesson, Mercedes de la Zerda, Patrick Flanagan, Spencer Bogaert, Michael Kruse-Dahl, Marcin Kowalczyk, Louis Lay, Blake Point, Kyle Glenn Thomas, Taran Kootenhayoo', 'Studio 8', 'Suspense, Aventura'),
-(94, 0, 'Hanung Bramantyo', 'Reza Rahadian, Delia Husein, Rano Karno, Meriam Bellina, Adjis Doaibu, Aci Resti, Qomar, Billa Barbie, Lydia Kandou, Hamka Siregar, Melanie Ricardo, Tora Sudiro, Jelita Ramlan', 'Falcon Pictures', 'Drama, Música, Comedia, Acción'),
-(111, 0, 'Eli Roth', 'Bruce Willis, Vincent D\'Onofrio, Dean Norris, Elisabeth Shue, Jack Kesy, Beau Knapp, Kirby Bliss Blanton, Mike Epps, Len Cariou, Kimberly Elise, Ronnie Gene Blevins, Ian Matthews, Nathaly Thibault, Christopher Tyson, Melantha Blackthorne, Dawn Ford, Sway, Kenny Wong, Moe Jeudy-Lamour, Stephanie Janusauskas, Richard Esteras, Jason Cavalier, Mike Chute, Naomi Frenette, Alex Zelenka, Luis Oliva, Camila Morrone', 'Paramount Pictures, Metro-Goldwyn-Mayer (MGM)', 'Acción, Crimen, Drama, Suspense'),
-(112, 0, 'Shawn Christensen', 'Logan Lerman, Elle Fanning, Nathan Lane, Kyle Chandler, Michelle Monaghan, Blake Jenner, Margaret Qualley, Tim Blake Nelson, Yahya Abdul-Mateen II, Janina Gavankar, Michael Drayer, Christina Brucato, Alex Karpovsky, David Alan Basche, Darren Pettie, Sean Cullen, Michael Chen, Stephanie Purpuri, John Trejo, Richard Beal, Ryan Willard, Zakiya Young, Jason Tottenham, Lee Garrett, Charlie Le Grice, Cris Williams, Nicole Bonifacio, Azumi Tsutsui, Iris Delgado, Fredrick Lopez, Fredi Walker-Browne, Cas', 'Super Crispy Entertainment, Fuzzy Logic Pictures, A24', 'Drama, Misterio'),
-(127, 96, 'Paul Urkijo Alijo', 'Kandido Uranga, Eneko Sagardoy, Uma Bracaglia, Ramón Aguirre, Gorka Aguinagalde, Josean Bengoetxea, José Ramón Argoitia, Iñigo de la Iglesia', 'Pokeepsie Films, Kinoskopik s.l.', 'Fantasía, Terror'),
-(157, 0, 'Ava DuVernay', 'Oprah Winfrey, Reese Witherspoon, Mindy Kaling, Storm Reid, Zach Galifianakis, Chris Pine, Gugu Mbatha-Raw, Michael Peña, Levi Miller, Deric McCabe, André Holland, Rowan Blanchard, Will McCormack, Bellamy Young, Daniel MacPherson', 'Walt Disney Pictures, Whitaker Entertainment', 'Aventura, Ciencia ficción, Familia, Fantasía'),
-(1337, 0, 'Andrew Erwin', 'Dennis Quaid, Cloris Leachman, J Michael Finley, Brody Rose, Madeline Carroll, Gianna Simone, Kevin Downes, Jason Burkey, Rhoda Griffis, Tanya Clarke, Nicole DuPort, Priscilla C. Shirer, Taegen Burns, Trace Adkins', 'Liddell Entertainment, Toy Gun Films, Mission Pictures International, Imagine Rights, LLC, Kevin Downes Productions', 'Drama, Familia');
-
 -- --------------------------------------------------------
 
 --
@@ -80,15 +58,6 @@ CREATE TABLE `linked` (
   `user_id` varchar(16) NOT NULL,
   `movie_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `linked`
---
-
-INSERT INTO `linked` (`user_id`, `movie_id`) VALUES
-('administrador', 83),
-('administrador', 87),
-('administrador', 157);
 
 -- --------------------------------------------------------
 
@@ -112,18 +81,8 @@ CREATE TABLE `movies` (
 --
 
 INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
-(74, 474444, 'Les garçons sauvages', '2018-02-28', 'fr', '', 'http://image.tmdb.org/t/p/w185/rmoUMzpMzA8XbYKRYx55PvbO8YE.jpg', 4.61599),
-(75, 486114, 'L\'Amour des hommes', '2018-02-28', 'fr', '', 'http://image.tmdb.org/t/p/w185/6wNe46WTMdAmatLBcuZ33JM4G8P.jpg', 11.6894),
-(76, 500863, 'Balash Tebousni', '2018-02-28', 'ar', '', 'http://image.tmdb.org/t/p/w185/4EpYr9JVvrpMKscMJEiRMKtVeBM.jpg', 1.09371),
 (77, 490078, 'ഈ.മ.യൗ', '2018-03-30', 'ml', '', 'http://image.tmdb.org/t/p/w185/raq2pYeOJyeE26SRr5QaRcNn9O1.jpg', 2.06551),
-(78, 484915, 'C4', '2018-02-28', 'da', '', 'http://image.tmdb.org/t/p/w185', 12.5135),
-(79, 500168, '궁합', '2018-02-28', 'ko', '', 'http://image.tmdb.org/t/p/w185/r9fGyJgzQ5KIEfDzk4diVRI3kQq.jpg', 12.4461),
-(80, 501901, 'Gelukzoekers', '2018-02-28', 'nl', '', 'http://image.tmdb.org/t/p/w185/fSChe6hKhzAGpdaXidBasRKskru.jpg', 10.1638),
 (81, 470442, 'Third World Boys', '2018-12-28', 'ml', '', 'http://image.tmdb.org/t/p/w185/sazqOao9eOJwtLSZgMZ7dcnuaaP.jpg', 1.49882),
-(82, 496283, 'Buy Bust', '2018-02-28', 'tl', '', 'http://image.tmdb.org/t/p/w185/lrC6a5Qy71JWpeYb2nKa733dBIY.jpg', 17.5647),
-(83, 456165, 'La ch\'tite famille', '2018-02-28', 'fr', '', 'http://image.tmdb.org/t/p/w185/4PUWT2dnIwyi5ucTmZfu9NEiSxU.jpg', 18.7061),
-(84, 474298, 'La Fête est finie', '2018-02-28', 'fr', '', 'http://image.tmdb.org/t/p/w185/piicLxtTwjMc3zAwJLy5W67NYiu.jpg', 10.8865),
-(85, 448491, '리틀 포레스트', '2018-02-28', 'ko', '', 'http://image.tmdb.org/t/p/w185/8GGFOcaDbwSc7g34pz8FEt6vXAg.jpg', 11.649),
 (86, 302349, 'Iron Sky: The Coming Race', '2018-03-01', 'en', '', 'http://image.tmdb.org/t/p/w185/dJTn8jUruV3llF1sGxSakd3hC63.jpg', 13.9836),
 (87, 399360, 'Alpha', '2018-03-01', 'en', 'Alpha es una aventura épica ambientada en la última Edad de Hielo. Europa, 20.000 años atrás. En mitad de su primera cacería con el grupo de élite de su tribu, un joven es herido y dado por muerto. Al despertar se encontrará débil y solo, y deberá aprender a sobrevivir y abrirse camino ante la dura y cruel naturaleza. Acompañado a regañadientes de un lobo abandonado por su manada, los dos aprenderán a confiar el uno en el otro, convertirse en aliados y superar los innumerables peligros para, contra toda posibilidad, encontrar el camino a casa antes de que llegue el letal invierno.', 'http://image.tmdb.org/t/p/w185/ujWmzBgVZLyTiEbFPgA50qSJVGl.jpg', 16.6552),
 (88, 493956, 'Naakaa', '2018-03-01', 'en', '', 'http://image.tmdb.org/t/p/w185/1eEKCusPWzq5zs4ruddo7ZoE2Uh.jpg', 8.89313),
@@ -300,7 +259,7 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (259, 458534, 'Tout le monde debout', '2018-03-14', 'fr', '', 'http://image.tmdb.org/t/p/w185/kTz9GspxmcuoEbK4BONPBYITAII.jpg', 5.23762),
 (260, 501904, 'Get Lost!', '2018-03-14', 'en', '', 'http://image.tmdb.org/t/p/w185/aNvcUJUAqyUuMT9F00NKWX5nRS9.jpg', 3.29551),
 (261, 338970, 'Tomb Raider', '2018-03-14', 'en', 'Lara Croft (Alicia Vikander) es una joven e inexperta arqueóloga que se embarcará en su primera aventura para terminar la investigación arqueológica iniciada por su padre, y descubrir así antiguos secretos con el fin de limpiar el deshonrado nombre de su progenitor. Esta expedición llena de peligros será una lucha por la supervivencia, con nuevas pruebas y nuevos enemigos, en la que Croft, poco a poco, se irá convirtiendo en la heroína que todos conocemos. La historia de una mujer corriente que descubre su carácter de luchadora al verse obligada a poner a prueba sus habilidades de lucha con el único propósito de salir con vida.', 'http://image.tmdb.org/t/p/w185/u3xx4Vd6idl4kynRh7qL6eJWVEA.jpg', 15.8739),
-(262, 370567, 'Sherlock Gnomes', '2018-03-15', 'en', 'El jardín de los gnomos, Gnomeo y Juliet recurren al reconocido detective Sherlock Gnomes para investigar la misteriosa desaparición de otros adornos de jardín.', 'http://image.tmdb.org/t/p/w185/xHdf2wRgCSp9MrZRryikiZIH6jB.jpg', 7.91023),
+(262, 370567, 'Sherlock Gnomes', '2018-03-15', 'en', 'El jardín de los gnomos, Gnomeo y Juliet recurren al reconocido detective Sherlock Gnomes para investigar la misteriosa desaparición de otros adornos de jardín.', 'http://image.tmdb.org/t/p/w185/nEKyrDJWjtouIhA1WzjNDhNfjIY.jpg', 7.91023),
 (263, 407439, 'María Magdalena', '2018-03-15', 'en', 'Rooney Mara interpreta a María Magdalena en este biopic sobre el famoso personaje bíblico, que busca realizar un retrato auténtico, único y humanista de una de las figuras más enigmáticas de la historia.', 'http://image.tmdb.org/t/p/w185/rHxd1VMNp46Foqqgjzw4CFL4V9U.jpg', 4.90763),
 (264, 368182, 'Compulsion', '2018-03-15', 'en', '', 'http://image.tmdb.org/t/p/w185/8fPZ50FDA0J3EamkP3g371rewNg.jpg', 5.87744),
 (265, 480570, 'Unmarked', '2018-03-15', 'en', '', 'http://image.tmdb.org/t/p/w185/3tuDys9E5j2YFn5pO8cJrjjT6XG.jpg', 2.98925),
@@ -438,12 +397,12 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (397, 407890, 'Lean on Pete', '2018-04-04', 'en', 'Charlie Thompson, un chico de quince años que es abandonado a su suerte por su padre, emprende junto a un caballo de carreras robado un peligroso viaje en busca de su tía, de la cual no tiene noticias desde hace tiempo, y un nuevo hogar. (FILMAFFINITY)', 'http://image.tmdb.org/t/p/w185/7SuPHSo9Uw8GACkP2oPst512Qhl.jpg', 3.34339),
 (398, 469052, 'Gaston Lagaffe', '2018-04-04', 'fr', '', 'http://image.tmdb.org/t/p/w185/kic42Lz8foU8hsbG4Wsk6uCdBtL.jpg', 3.36076),
 (399, 490862, 'Mes provinciales', '2018-04-04', 'fr', '', 'http://image.tmdb.org/t/p/w185/va8ecPoBMZrjcqRx1jenmJVqgBS.jpg', 1.82826),
-(400, 477489, 'Dans la brume', '2018-04-04', 'fr', '', 'http://image.tmdb.org/t/p/w185', 1.85176);
-INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
-(401, 447332, 'Un Lugar en Silencio', '2018-04-05', 'en', 'Una familia vive en una casa en medio del bosque, hablando con lenguaje de signos y con sumo cuidado de no hacer ningún ruido. Algo, no sabemos muy bien que, se ha adueñado del mundo, pero solo caza a través del ruido, por lo que tan solo pueden sobrevivir en silencio.', 'http://image.tmdb.org/t/p/w185/nAU74GmpUk7t5iklEp3bufwDq4n.jpg', 3.85366),
+(400, 477489, 'Dans la brume', '2018-04-04', 'fr', '', 'http://image.tmdb.org/t/p/w185', 1.85176),
+(401, 447332, 'Un lugar tranquilo', '2018-04-05', 'en', 'Sigue la historia de una familia que vive en una casa en el bosque cuidándose de no emitir ningún sonido. Si no te escuchan, no pueden cazarte...', 'http://image.tmdb.org/t/p/w185/nAU74GmpUk7t5iklEp3bufwDq4n.jpg', 3.85366),
 (402, 469284, 'Гоголь. Вий', '2018-04-05', 'en', '', 'http://image.tmdb.org/t/p/w185/xB6eKzn34BeX2DAUdehcfPLYtrB.jpg', 1.79557),
 (403, 502260, 'Русские', '2018-04-05', 'ru', '', 'http://image.tmdb.org/t/p/w185', 1.87125),
-(404, 456929, 'Campeones', '2018-04-06', 'es', 'La cinta es, en palabras del propio Fesser a Variety, \"una comedia rodada como si fuera un drama\" en torno a un entrenador de la ACB (interpretado por Javier Gutiérrez) con una \"seria discapacidad emocional\" que, por azares del destino, se ve condenado a entrenar a un equipo de baloncesto cuyos jugadores tienen \"discapacidad intelectual\".  Filmada con actores no profesionales con discapacidad intelectual, sus responsables hablan de un filme cercano, auténtico y realista filmado de manera muy natural cuya intención es hacernos reír al mismo tiempo que nos toca el corazón. O en palabras de Álvaro Longoria, de Morena Films, una \"comedia feel-good llena de energía positiva y humor, en una original combinación idónea para Javier Fesser\".', 'http://image.tmdb.org/t/p/w185', 1.24845),
+(404, 456929, 'Campeones', '2018-04-06', 'es', 'La cinta es, en palabras del propio Fesser a Variety, \"una comedia rodada como si fuera un drama\" en torno a un entrenador de la ACB (interpretado por Javier Gutiérrez) con una \"seria discapacidad emocional\" que, por azares del destino, se ve condenado a entrenar a un equipo de baloncesto cuyos jugadores tienen \"discapacidad intelectual\".  Filmada con actores no profesionales con discapacidad intelectual, sus responsables hablan de un filme cercano, auténtico y realista filmado de manera muy natural cuya intención es hacernos reír al mismo tiempo que nos toca el corazón. O en palabras de Álvaro Longoria, de Morena Films, una \"comedia feel-good llena de energía positiva y humor, en una original combinación idónea para Javier Fesser\".', 'http://image.tmdb.org/t/p/w185', 1.24845);
+INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
 (405, 397833, 'World War 3', '2018-04-06', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.89856),
 (406, 385955, 'Where Is Kyra?', '2018-04-06', 'en', '', 'http://image.tmdb.org/t/p/w185/dOvEgIRBxRUCbFuiPC56X0L8vZy.jpg', 1.96272),
 (407, 465642, 'परमाणु: द स्टोरी ऑफ़ पोखरण', '2018-04-06', 'hi', '', 'http://image.tmdb.org/t/p/w185/wsFSkya8QrfVxWi6sYnul86a71R.jpg', 1.84224),
@@ -781,9 +740,8 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (739, 331484, 'Scarface', '2018-08-08', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.30399),
 (740, 426563, 'Holmes and Watson', '2018-08-08', 'en', '', 'http://image.tmdb.org/t/p/w185/PoJ5z9PK7ZVZAYhTot50wmaTTt.jpg', 3.79197),
 (741, 481762, 'Neuilly sa mère, sa mère', '2018-08-08', 'fr', '', 'http://image.tmdb.org/t/p/w185', 1.36453),
-(742, 504897, '宇宙戦隊キュウレンジャー VS スペース・スクワッド', '2018-08-08', 'ja', '', 'http://image.tmdb.org/t/p/w185', 1.70077);
-INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
-(743, 345940, 'Meg', '2018-08-10', 'en', 'En una expedición a la fosa de las Marianas, la más profunda del océano Pacífico, Jonas Taylor (Jason Statham), un submarinista especializado en aguas profundas, se encontrará frente a frente con el depredador más poderoso y mortífero del reino animal. Taylor, único superviviente de la misión, asegura que se trata de un Megalodon, animal que se creía extinguido desde mucho antes de que el hombre habitara la Tierra y gigantesco antecesor del gran tiburón blanco.  Obsesionado con lo que asegura haber visto, Taylor seguirá con sus investigaciones para probar la existencia de este animal prehistórico. Y es que, nadie le cree y es considerado un lunático que sufre trastorno de estrés postraumático. Pero, aunque resulte imposible ya que es una especie completamente extinguida ¿podría el Megalodon seguir vivo?', 'http://image.tmdb.org/t/p/w185/9u72dJxrEcwgJynDbPhIfWOayRM.jpg', 5.0361),
+(742, 504897, '宇宙戦隊キュウレンジャー VS スペース・スクワッド', '2018-08-08', 'ja', '', 'http://image.tmdb.org/t/p/w185', 1.70077),
+(743, 345940, 'Meg', '2018-08-10', 'en', 'En una expedición a la fosa de las Marianas, la más profunda del océano Pacífico, Jonas Taylor (Jason Statham), un submarinista especializado en aguas profundas, se encontrará frente a frente con el depredador más poderoso y mortífero del reino animal. Taylor, único superviviente de la misión, asegura que se trata de un Megalodon, animal que se creía extinguido desde mucho antes de que el hombre habitara la Tierra y gigantesco antecesor del gran tiburón blanco.  Obsesionado con lo que asegura haber visto, Taylor seguirá con sus investigaciones para probar la existencia de este animal prehistórico. Y es que, nadie le cree y es considerado un lunático que sufre trastorno de estrés postraumático. Pero, aunque resulte imposible ya que es una especie completamente extinguida ¿podría el Megalodon seguir vivo?', 'http://image.tmdb.org/t/p/w185/uqfopaQyoY3NjASOuEYg01278ga.jpg', 5.0361),
 (744, 449562, 'Nasty Women', '2018-08-10', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.5044),
 (745, 275236, 'Lo que podríamos ser', '2018-08-12', 'es', '', 'http://image.tmdb.org/t/p/w185/yxlPxf5VStRdIUowUyjMCknIWi0.jpg', 1.48095),
 (746, 470541, 'Plan V', '2018-08-12', 'es', '', 'http://image.tmdb.org/t/p/w185', 1.79683),
@@ -794,7 +752,8 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (751, 400090, 'The Nightingale', '2018-08-15', 'en', '', 'http://image.tmdb.org/t/p/w185', 2.05153),
 (752, 428045, 'Journey to China: The Iron Mask Mystery', '2018-08-16', 'en', '', 'http://image.tmdb.org/t/p/w185/ILU8VveCib2WsnOkm6Wm2gvNix.jpg', 3.15196),
 (753, 449998, 'The Invincible Dragon', '2018-08-16', 'en', '', 'http://image.tmdb.org/t/p/w185/nXxFPM6f3p9mtbFcuq8lAuLQq5b.jpg', 1.3045),
-(754, 412988, 'The Happytime Murders', '2018-08-17', 'en', '', 'http://image.tmdb.org/t/p/w185', 2.26512),
+(754, 412988, 'The Happytime Murders', '2018-08-17', 'en', '', 'http://image.tmdb.org/t/p/w185', 2.26512);
+INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
 (755, 466081, 'Three Seconds', '2018-08-17', 'en', '', 'http://image.tmdb.org/t/p/w185', 2.34339),
 (756, 438808, 'White Boy Rick', '2018-08-17', 'en', 'Richard Wershe Jr. empieza a trabajar como informante del FBI a los 14 años, pero este trabajo le obliga a adentrarse en el mundo de la droga y convertirse en un importante narcotraficante. Wershe lleva una doble vida que termina a sus 17 años cuando es acusado por un delito de drogas y condenado a treinta años de cárcel.', 'http://image.tmdb.org/t/p/w185', 2.38808),
 (757, 455207, 'Crazy Rich Asians', '2018-08-17', 'en', '', 'http://image.tmdb.org/t/p/w185', 2.83693),
@@ -1158,8 +1117,7 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (1115, 381004, 'Timeliner', '2019-02-08', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.09749),
 (1116, 425908, 'Silver & Black', '2019-02-08', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.10728),
 (1117, 459992, 'Flarsky', '2019-02-08', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.3408),
-(1118, 422624, 'Bride of Frankenstein', '2019-02-13', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.36895);
-INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
+(1118, 422624, 'Bride of Frankenstein', '2019-02-13', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.36895),
 (1119, 454294, 'The Kid Who Would Be King', '2019-02-13', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.09181),
 (1120, 449563, 'Isn\'t It Romantic', '2019-02-14', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.18282),
 (1121, 505739, 'வீரமாதேவி', '2019-02-17', 'ta', '', 'http://image.tmdb.org/t/p/w185/gcm0QdFZQN3yxEg15GFTMp3xegc.jpg', 1.14629),
@@ -1177,7 +1135,8 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (1133, 373571, 'Godzilla: King of Monsters', '2019-03-21', 'en', 'Secuela de la película de 2014', 'http://image.tmdb.org/t/p/w185/sWbdCiWqonCwjbVQ6LwWkSgbD4o.jpg', 1.86938),
 (1134, 329996, 'Dumbo', '2019-03-27', 'en', '', 'http://image.tmdb.org/t/p/w185', 2.81493),
 (1135, 505423, 'Untitled Babak Anvari Film', '2019-03-29', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.17491),
-(1136, 505476, 'Making a Killing', '2019-04-01', 'en', '', 'http://image.tmdb.org/t/p/w185/j8EG1VhJdcxnJLKBcoOAIHTQo5V.jpg', 1.54601),
+(1136, 505476, 'Making a Killing', '2019-04-01', 'en', '', 'http://image.tmdb.org/t/p/w185/j8EG1VhJdcxnJLKBcoOAIHTQo5V.jpg', 1.54601);
+INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
 (1137, 450077, 'Space Race', '2019-04-01', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.33291),
 (1138, 287947, 'Shazam!', '2019-04-05', 'en', '', 'http://image.tmdb.org/t/p/w185/bvCcq3zp8P6uCYoHJ1ve75Jsjog.jpg', 6.32053),
 (1139, 422803, 'Shaun the Sheep 2', '2019-04-05', 'en', '', 'http://image.tmdb.org/t/p/w185/o4vNU5bhWUJKxHCqndI3ZPW0puo.jpg', 2.2079),
@@ -1232,7 +1191,7 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (1188, 506511, 'Han Zhan III', '2019-08-01', 'cn', '', 'http://image.tmdb.org/t/p/w185', 1.51631),
 (1189, 487001, 'Untitled Ren & Stimpy Short', '2019-08-02', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.06887),
 (1190, 475430, 'Artemis Fowl', '2019-08-09', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.34575),
-(1191, 466272, 'Untitled 1969/Manson Murders Project', '2019-08-09', 'en', '', 'http://image.tmdb.org/t/p/w185', 2.92159),
+(1191, 466272, 'Once Upon A Time In Hollywood', '2019-08-09', 'en', '', 'http://image.tmdb.org/t/p/w185', 2.34933),
 (1192, 496331, 'Brahmastra', '2019-08-15', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.62719),
 (1193, 346677, 'The Cannonball Run', '2019-08-16', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.24727),
 (1194, 460858, 'Creature from the Black Lagoon', '2019-08-16', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.45873),
@@ -1372,7 +1331,7 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (1328, 507720, 'Una selfie con Timochenko', '2018-03-01', 'es', '', 'http://image.tmdb.org/t/p/w185/4jOgbzfWQyeuI9izRhHSr8ZGRAQ.jpg', 3.8),
 (1329, 505911, 'Suaka', '2018-03-02', 'en', '', 'http://image.tmdb.org/t/p/w185/wxAsbLrQ7yHPg8LDyp0uv1j9RSW.jpg', 7.64558),
 (1330, 506865, 'Carriberrie', '2018-03-02', 'en', '', 'http://image.tmdb.org/t/p/w185/vuyLS9Z2v44zYcKC8BXaVZwrlta.jpg', 6.488),
-(1331, 504230, 'Cell 512612', '2018-03-02', 'en', '', 'http://image.tmdb.org/t/p/w185/7H8y5FXZA8qz1JF2bMHzHz0FQiN.jpg', 8.01659),
+(1331, 504230, 'The Mona Initiative', '2018-03-02', 'en', '', 'http://image.tmdb.org/t/p/w185/7H8y5FXZA8qz1JF2bMHzHz0FQiN.jpg', 8.01659),
 (1332, 507282, 'Luba', '2018-03-03', 'en', '', 'http://image.tmdb.org/t/p/w185/j7c1ksZ60RTeaHcZx55Ov220j3K.jpg', 4.92),
 (1333, 461479, 'நரகாசூரன்', '2018-03-04', 'ta', '', 'http://image.tmdb.org/t/p/w185/lUNnat646EFqSui396JIIuV1Nyp.jpg', 7.27484),
 (1334, 506509, 'Comic Sans', '2018-03-08', 'hr', '', 'http://image.tmdb.org/t/p/w185/3sezvFnGS3oSNpNyKaDLPttMYB6.jpg', 4.07744),
@@ -1510,11 +1469,6 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (1466, 425902, 'Luna Park', '2020-12-31', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.77961),
 (1467, 401251, 'Thrilla in Manilla', '2020-12-31', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.02218),
 (1468, 507086, 'Jurassic World 3', '2021-06-11', 'en', '', 'http://image.tmdb.org/t/p/w185', 1.07826),
-(1469, 503180, 'Rosie & Moussa', '2018-02-28', 'nl', '', 'http://image.tmdb.org/t/p/w185/pbaB2gWvWN4v0tSE1HurhYGUR5e.jpg', 1.00267);
-INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
-(1470, 508166, 'Unfamiliar Ceiling / The Beast', '2018-02-28', 'pt', '', 'http://image.tmdb.org/t/p/w185', 1),
-(1471, 507896, 'Derren Brown: The Push', '2018-02-28', 'en', '', 'http://image.tmdb.org/t/p/w185/3vpY6Xib63ugXa0GXb8JMLqxKFX.jpg', 3),
-(1472, 508153, 'Trait de vie', '2018-02-28', 'fr', '', 'http://image.tmdb.org/t/p/w185', 1),
 (1473, 445456, '55 Steps', '2018-03-01', 'en', '', 'http://image.tmdb.org/t/p/w185', 9.4356),
 (1474, 454693, 'Das schweigende Klassenzimmer', '2018-03-01', 'de', '', 'http://image.tmdb.org/t/p/w185/hYr7VamNAQw7epgHIRkDeVn7h0y.jpg', 12.8001),
 (1475, 508167, 'Hair', '2018-03-07', 'fr', '', 'http://image.tmdb.org/t/p/w185', 1),
@@ -1532,7 +1486,8 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (1487, 508152, 'Cerdita', '2018-03-11', 'es', '', 'http://image.tmdb.org/t/p/w185/56LQWZmY12yDPTq4zHTHdpl71kP.jpg', 1),
 (1488, 508211, 'La poesía sólo muere cuando termina', '2018-03-14', 'en', '', 'http://image.tmdb.org/t/p/w185/ucUFLFjAK5zB1UJ9aEtIISv3XY3.jpg', 1),
 (1489, 430682, 'Gun Shy', '2018-03-15', 'en', 'Basada en la novela homónima de Mark Haskell Smith. Turk Henry es una antigua estrella de rock con sobrepeso que viaja a Chile para disfrutar de unas vacaciones junto a su esposa, que será secuestrada por una banda de bucaneros que quiere financiar con el dinero del rescate su nuevo barco.', 'http://image.tmdb.org/t/p/w185/ugzaRtgrf2MBCUawgiE6xayXXIE.jpg', 4.57038),
-(1490, 508006, 'Damo & Ivor: The Movie', '2018-03-16', 'en', '', 'http://image.tmdb.org/t/p/w185/2fM8G4JtrMKaa0TfFssJCpeJjRQ.jpg', 2.358),
+(1490, 508006, 'Damo & Ivor: The Movie', '2018-03-16', 'en', '', 'http://image.tmdb.org/t/p/w185/2fM8G4JtrMKaa0TfFssJCpeJjRQ.jpg', 2.358);
+INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`, `synopsis`, `poster`, `popularity`) VALUES
 (1491, 508014, 'Conmigo vienen bailando', '2018-03-16', 'es', '', 'http://image.tmdb.org/t/p/w185/4We4GTZ0Q5wQoAGR6wwFMESnGl3.jpg', 2.358),
 (1492, 507849, 'Røverdatter', '2018-03-16', 'no', '', 'http://image.tmdb.org/t/p/w185/y4AjH9SoKNuV8gxQ0Tpfn9fd0Yr.jpg', 3),
 (1493, 449176, 'Love, Simon', '2018-03-16', 'en', 'Simon Spier es un joven 16 años que no se atreve a revelar su homosexualidad, ya que prefiere esperar al musical que se celebra en secundaria. Pero un día, uno de sus correos electrónicos llega a manos equivocadas y las cosas se complican extraordinariamente.', 'http://image.tmdb.org/t/p/w185/jbwaMBvw8qQFoNTDkU7VnI1HPyG.jpg', 10.2101),
@@ -1551,7 +1506,10 @@ INSERT INTO `movies` (`movie_id`, `info_id`, `title`, `release_date`, `language`
 (1506, 394151, 'Nosferatu', '2018-12-31', 'en', 'Remake de Nosferatu', 'http://image.tmdb.org/t/p/w185/roKRUEkjEIg8zjRDbXt4h1KcqE3.jpg', 1.59556),
 (1507, 498587, 'The Book of Vision', '2018-12-31', 'en', '', 'http://image.tmdb.org/t/p/w185/NOvMcqO8jztW4xJV9cBiHm2gqc.jpg', 1.48051),
 (1508, 494113, 'Infisert', '2018-12-31', 'no', '', 'http://image.tmdb.org/t/p/w185/fX9N4ejnjX2T0pfxaMaMvChC6WL.jpg', 1.18881),
-(1509, 507959, 'Untitled Dark Universe Crossover Film', '2020-07-04', 'en', '', 'http://image.tmdb.org/t/p/w185/9CjnFTjgGj5dg60ejuuKf3kLW3l.jpg', 1.922);
+(1509, 507959, 'Untitled Dark Universe Crossover Film', '2020-07-04', 'en', '', 'http://image.tmdb.org/t/p/w185/9CjnFTjgGj5dg60ejuuKf3kLW3l.jpg', 1.922),
+(1510, 443014, 'The Surrogate of Infidelity', '2018-05-11', 'en', '', 'http://image.tmdb.org/t/p/w185/uECDCyOdjfChXRF8b4zEBoCFlmo.jpg', 2.72841),
+(1511, 508330, 'Awoken', '2018-10-31', 'en', '', 'http://image.tmdb.org/t/p/w185', 1),
+(1512, 508282, 'Bram Stoker\'s Dracula vs Batman v Superman Dawn of Justice', '2020-02-05', 'en', '', 'http://image.tmdb.org/t/p/w185/1hYrHkA0woDjUmimh0AEuNlz6jM.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -1639,13 +1597,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `general_update`
 --
 ALTER TABLE `general_update`
-  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `movies`
 --
 ALTER TABLE `movies`
-  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1510;
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1513;
 
 --
 -- Restricciones para tablas volcadas
