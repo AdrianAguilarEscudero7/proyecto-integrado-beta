@@ -15,7 +15,7 @@
 
 ## Algunas capturas de la aplicación
 
-### ![](Alarmovie/img/alarmovie01.png)
-### ![](Alarmovie/img/alarmovie02.png)
-### ![](Alarmovie/img/alarmovie03.png)
-### ![](Alarmovie/img/alarmovie04.png)
+## ![](Alarmovie/img/alarmovie01.png)
+## ![](Alarmovie/img/alarmovie02.png)
+## ![](Alarmovie/img/alarmovie03.png)
+## ![](Alarmovie/img/alarmovie04.png)
