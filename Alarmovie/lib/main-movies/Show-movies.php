@@ -25,11 +25,16 @@
             $defaultSyn = "No hay sinopsis asociada actualmente...";
         }
 
+        $defaultPoster = $row->poster;
+        if (substr($defaultPoster, 0, -1) == "http://image.tmdb.org/t/p/w18") {
+            $defaultPoster = "./img/AlarmovieFavicon.png";
+        }
+
         # Mostramos los datos en el main
         echo "
             <div class='row movie-card'>
                 <div class='col s12 movie-container' data-id='$row->movie_id' data-info-id='$row->info_id'>
-                    <div class='col s12 m6 l4' data-poster><img src='$row->poster' alt='No hay póster'></div>
+                    <div class='col s12 m6 l4' data-poster><img src='$defaultPoster' alt='No hay póster'></div>
                     <div class='col s12 m6 l8' data-content>
                         <div class='row'>
                             <div class='col s12'><h1>$row->title</h1></div>

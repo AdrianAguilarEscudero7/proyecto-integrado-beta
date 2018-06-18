@@ -20,7 +20,7 @@
         if (strlen($userId) > 16 || strlen($pass) > 16) {
             echo "Ha debido introducir más caracteres de lo permitido.";
         } else {
-            $sql = "SELECT * FROM users WHERE BINARY user_id = '$userId' AND password = '".base64_encode($pass)."';";
+            $sql = "SELECT * FROM users WHERE BINARY user_id = '$userId' AND password = md5('$pass');";
             $result = setSql($conex, $sql);
             $row = $result->fetch_object();
 
@@ -71,7 +71,7 @@
 
         if (preg_match($regExpUserPass, $regUserId) && preg_match($regExpUserPass, $regPass) && preg_match($regExpNameSurname, $regName) 
         && preg_match($regExpNameSurname, $regSurname) && preg_match($regExpMail, $email)) {
-            $sql = "INSERT INTO users (user_id, password, name, surname, email) VALUES ('$regUserId', '".base64_encode($regPass)."',
+            $sql = "INSERT INTO users (user_id, password, name, surname, email) VALUES ('$regUserId', md5('$regPass'),
                 '$regName', '$regSurname', '$email');";
             if (setSql($conex, $sql)) {
                 echo true;    

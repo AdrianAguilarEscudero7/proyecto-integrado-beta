@@ -29,7 +29,7 @@
         $i = $_GET["iterator"] ?? 1; // Iterador para las filas
         while ($row = $result->fetch_object()) { // Mientras haya resultados devolvemos los registros en una tabla
             echo "<tr id='$i'>";
-            echo "<td data-user>$row->user_id</td><td data-pass>".base64_decode($row->password)."</td><td data-name>$row->name</td>";
+            echo "<td data-user>$row->user_id</td><td data-pass>$row->password</td><td data-name>$row->name</td>";
             echo "<td data-surname>$row->surname</td><td data-email>$row->email</td>";
             echo "<td><button class='waves-effect waves-light btn orange-background' data-user-edit>Editar</button></td>";
             echo "<td><button class='waves-effect waves-light btn orange-background' data-user-delete>Borrar</button></td><td>";
@@ -45,7 +45,7 @@
         if ($type == "edit") { // Si es modificación, modificamos el usuario con id elegido
 
             $userId = $_POST["userId"];
-            $sql2 = "UPDATE users SET user_id = '$userEdit', password = '".base64_encode($passEdit)."', name = '$nameEdit', 
+            $sql2 = "UPDATE users SET user_id = '$userEdit', password = md5('$passEdit'), name = '$nameEdit', 
                 surname = '$surnameEdit', email = '$emailEdit' WHERE user_id = '$userId';";
             if (!$result2 = setSql($conex, $sql2)) { // Si hubo algún error
                 echo "Hubo algún problema. Inténtelo más tarde.";
@@ -55,7 +55,7 @@
         } else { // Si es una inserción
             
             $sql2 = "INSERT INTO users (user_id, password, name, surname, email) 
-                VALUES ('$userEdit', '".base64_encode($passEdit)."', '$nameEdit', '$surnameEdit', '$emailEdit');";
+                VALUES ('$userEdit', md5('$passEdit'), '$nameEdit', '$surnameEdit', '$emailEdit');";
             if (!$result2 = setSql($conex, $sql2)) { // Si hubo algún error
                 echo "Hubo algún problema. Inténtelo más tarde.";
             } else {

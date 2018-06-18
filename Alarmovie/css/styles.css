@@ -1,4 +1,62 @@
-/*courier-new font*/
+
+.container {
+    max-width: 1000px;
+}
+
+/*********************** Index ***********************/
+div.index-info {
+    margin: 22vh auto;
+    width: 30%;
+    padding: 20px;
+}
+
+div.index-info span#reg-success {
+    color: #fff;
+}
+
+div.index-info a {
+    color: #000;
+    font-weight: bold;
+}
+
+div.index-info button#send {
+    width: 98%;
+    color: #000;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+div.index-info input[type=text]:not(.browser-default) {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+div.index-info input[type=password]:not(.browser-default) {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+div.index-info input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 0 0 #fff;
+}
+
+div.index-info input[type=password]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid #fff;
+    box-shadow: 0 1px 0 0 #fff;
+}
+
+div.index-info .input-field>label, span#sign-in-validate {
+    color: #fff;
+}
+
+div.index-info input[type=text]:not(.browser-default):focus:not([readonly]) + label, div.index-info input[type=password]:not(.browser-default):focus:not([readonly]) + label {
+    color: #fff;
+}
+
+div.sub-form {
+    margin-left: 10px;
+}
 
 /*********************** Calendario ***********************/
 
@@ -176,6 +234,31 @@ span.info-close {
 
 nav {
     font-weight: bold;
+}
+
+div.nav-wrapper ul.right.hide-on-med-and-down li div.input-field {
+    height: auto;
+}
+
+div.nav-wrapper ul.right.hide-on-med-and-down li div.input-field input[type=search] {
+    margin-bottom: 0;
+}
+
+div.nav-wrapper ul.right.hide-on-med-and-down li div.input-field input[type=search]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 0;
+    box-shadow: none;
+}
+
+nav .input-field label i {
+    color: #fff;
+}
+
+div#main-search-result {
+    height: 305px;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 999;
+    position: relative;
+    display: none;
 }
 
 /*********************** Administración ***********************/

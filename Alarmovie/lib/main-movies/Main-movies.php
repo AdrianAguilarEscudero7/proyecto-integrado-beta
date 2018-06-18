@@ -88,16 +88,18 @@
         $castDir = json_decode($getCastDir, true); // Se decodifica el json en array asociativo
 
         $duration = $movie["runtime"]; // Se almacena la duración
-        $director = ""; // Nulo si no encuentra
+        $director = ""; // Vacío si no encuentra
+
         foreach($castDir["crew"] as $isDir) { // Itera en los resultados de la organización
             if ($isDir["job"] == "Director") { // Si la película tiene director lo almacena
                 $director = $conex->real_escape_string($isDir["name"]);
                 break;
             }
         }
-        $castSubstr = ""; // Nulo si no encuentra
-        $producerSubstr = ""; // Nulo si no encuentra
-        $genreSubstr = ""; // Nulo si no encuentra
+        
+        $castSubstr = ""; // Vacío si no encuentra
+        $producerSubstr = ""; 
+        $genreSubstr = "";
 
         foreach($castDir["cast"] as $c) { // Concatena todo el reparto que encuentre
             $castSubstr .= $c["name"].", ";
@@ -160,10 +162,9 @@
                             <div class='col s12 m12 l6'><span class='orange-text2'>Idioma: </span>".$row->language."<hr/></div>
                             <div class='col s12 m12 l6'><span class='orange-text2'>Director: </span>".$row->director."<hr/></div>
                             <div class='col s12 m12 l6'><span class='orange-text2'>Duración: </span>".$row->duration."<hr/></div>
-                            <div class='row no-margin-bottom'>
-                                <div class='col s12 m12 l6'><span class='orange-text2'>Productoras: </span>".$row->producer."<hr/></div>
-                                <div class='col s12 m12 l6'><span class='orange-text2'>Género: </span>".$row->genre."<hr/></div>
-                            </div>
+                            <div class='col s12 m12 l6'><span class='orange-text2'>Productoras: </span>".$row->producer."<hr/></div>
+                            <div class='col s12 m12 l6'><span class='orange-text2'>Género: </span>".$row->genre."<hr/></div>
+                            <div class='row no-margin-bottom'></div>
                             <div class='col s12 info-cast'><span class='orange-text2'>Reparto: </span>".$row->cast."</div>
                         </div>
                     </div>

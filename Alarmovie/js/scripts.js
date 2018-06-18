@@ -321,11 +321,11 @@ $(document).ready(function() {
     });
 
     // Filtra por usuario, nombre o apellidos
+    let char;
     $("#search-user").on("input", function() {
-        let char = $("#search-user").val();
         char = $("#search-user").val();
         let smc = $("#show-more-users").hide();
-        if ($("#search-user").val() == "") {
+        if (char == "") {
             offset1 = 0;
             smc.html($(".preloader").html());
         }
@@ -518,7 +518,7 @@ $(document).ready(function() {
                 $("#date td:has(a)").datepicker().each(function() {
                     let dt = new Date(($(this).attr("data-year")+"-"+(parseInt($(this).attr("data-month"))+1)+"-"+$(this).text()));
                     let dateFormat = $.datepicker.formatDate("yy-mm-dd",dt);
-                    if (dateResponse["dateTrue"] === dateFormat) { // Si las fechas coinciden, pinta la celda
+                    if (dateResponse["dateTrue"] === dateFormat) { // Si las fechas coinciden, pinta la celda   
                         $(this).children("a").css({
                             "background-color": "#ff6000",
                             "color": "#fff",
@@ -547,7 +547,7 @@ $(document).ready(function() {
 
     //------------------- Películas -------------------//
 
-    // Llama a php y hace una actualización general cada 5 días
+    // Llama a php y hace una actualización general cada día
     function generalUpdate() {
         $.get("lib/main-movies/Main-movies.php", {type: "generalUpdate"}, function(response) {
             console.log(response);
@@ -636,6 +636,7 @@ $(document).ready(function() {
 
     // Vincula o desvincula al usuario con la película
     $(document).on("click", "i.alarm", function() {
+        Push.Permission.request();
         let movieID = $(this).attr("data-id");
         $.post("lib/main-datepicker/Main-datepicker.php", {type: "linkUserMovie", movieID: movieID}, function(response) {
             if (response == "on") {
@@ -646,6 +647,98 @@ $(document).ready(function() {
         });
     });
 
+    //------------------- Recuperación de contraseña -------------------//
+
+    // Dialog para la petición de recuperar la contraseña
+    $("#pass-recovery").dialog({
+        title: "Recuperar contraseña",
+        autoOpen: false,
+        width: 550,
+        maxWidth: 550,
+        height: "auto",
+        resizable: false,
+        draggable: false,
+        modal: true,
+        fluid: true,
+        close: function() {$("#pass-recovery-form")[0].reset(); $("#mail-pass-recovery-valid").text("");},
+        buttons: {
+            'Enviar': function() {
+                let emailPassRecovery = $("#mail-pass-recovery").val();
+                if (!regExpMail.test(emailPassRecovery)) {
+                    $("#mail-pass-recovery-valid").text("Introduzca un formato de correo válido.");
+                } else {
+                    $("#mail-pass-recovery-valid").text("");
+                    $.post("lib/pass-recovery/Pass-recovery.php", {type: "changePassRequest", emailPassRecovery: emailPassRecovery}, function(response) {
+                        if (response === "noexists") {
+                            $("#mail-pass-recovery-valid").text("La dirección de correo introducida no existe.");
+                        } else if (response === "errorquery") {
+                            $("#mail-pass-recovery-valid").text("Se produjo un fallo en el envío, inténtelo más tarde.");
+                        } else if (response === "mailsent") {
+                            $("#mail-pass-recovery-valid").text("Correo enviado correctamente, por favor, revíselo.");
+                        } else if (response === "mailerror") {
+                            $("#mail-pass-recovery-valid").text("Se produjo un error al intentar enviar el correo.");
+                        } else if (response === "requestoncourse") {
+                            $("#mail-pass-recovery-valid").text("Ya hay una petición en curso, espere 2 horas para solicitar otra.");
+                        }
+                    });
+                }
+            }
+        }
+    });
+
+    // Dialog para cambiar la contraseña
+    $("#change-pass-request").dialog({
+        title: "Cambiar contraseña",
+        autoOpen: false,
+        width: 550,
+        maxWidth: 550,
+        height: "auto",
+        resizable: false,
+        draggable: false,
+        modal: true,
+        fluid: true,
+        close: function() {$("#change-pass-form")[0].reset(); $("#change-pass-valid").text("");},
+        buttons: {
+            'Cambiar contraseña': function() {
+                let newPass = $("#new-password").val();
+                let confirmNewPass = $("#confirm-new-password").val();
+                let changePassUserID = $("#change-pass-id").val();
+
+                if (newPass != confirmNewPass) {
+                    $("#change-pass-valid").text("Las contraseñas deben coincidir.");
+                } else if (!regExpUserPass.test(newPass)) {
+                    $("#change-pass-valid").text("Se permiten letras y números de 6 a 16 caracteres.");
+                } else {
+                    $("#change-pass-valid").text("");
+                    $.post("lib/pass-recovery/Pass-recovery.php", {type: "changePass", newPass: newPass, changePassUserID: changePassUserID}, function(response) {
+                        if (response === "alreadychanged") {
+                            $("#change-pass-valid").text("Ya ha cambiado su contraseña.");
+                        } else if (response === "changesuccess") {
+                            $("#change-pass-valid").text("Contraseña cambiada correctamente.");
+                            return false;
+                        } else if (response === "changefail") {
+                            $("#change-pass-valid").text("Hubo un error al intentar cambiar la contraseña.");
+                        }
+                    });
+                }
+            }
+        }
+    });
+
+    // Abre el dialog para recuperar la contraseña
+    $("#forgot-pass").click(function() {
+        $("#pass-recovery").dialog("open");
+    });
+
+    //------------------- Envía correos automáticos -------------------//
+
+    sendMails();
+
+    function sendMails() {
+        $.get("lib/send-email/Send-email.php", {}, function(response) {
+        });
+    }
+
     //------------------- Barra de navegación -------------------//
-    $(".button-collapse").sideNav(); // Abre el menú desplegable para móviles
+    $('.sidenav').sidenav(); // Abre el menú desplegable para móviles
 });
