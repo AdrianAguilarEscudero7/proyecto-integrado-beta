@@ -9,3 +9,5 @@
 #### 5- ¡Listo!, ya puede entrar desde localhost/Alarmovie/index.php.
 
 ### O si lo prefiere, puede entrar desde internet en [Alarmovie](https://betalarmovie.000webhostapp.com/main.php).
+
+[embed]Alarmovie.pdf[/embed]
