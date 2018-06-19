@@ -1,13 +1,29 @@
+/*********************** General ***********************/
 
 .container {
     max-width: 1000px;
 }
 
 /*********************** Index ***********************/
-div.index-info {
-    margin: 22vh auto;
-    width: 30%;
-    padding: 20px;
+
+.index-title {
+    margin-top: 50px;
+}
+
+h1.title {
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+.index-info {
+    margin-top: 20px;
+}
+
+@media only screen and (min-width: 993px) {
+    #index-view .container {
+        width: 30%;
+    }
 }
 
 div.index-info span#reg-success {

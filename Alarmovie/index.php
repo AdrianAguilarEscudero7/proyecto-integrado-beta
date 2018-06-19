@@ -26,30 +26,37 @@
     <script src="js/push.js/bin/push.min.js"></script>
     <script src="js/scripts.js"></script>
 </head>
-<body>
+<body id="index-view">
     <img style="position: absolute; top: 0; z-index: -1;" src="img/cinema2.jpeg" alt="" width="100%" height="100%">
-    <div class="row">
-        <div class="index-info">
-            <form id="sign-in-form" method="post">
-                <div class="input-field col s12">
-                    <input id="user-id" type="text" maxlength="16" name="userId">
-                    <label for="password">Usuario</label>
-                </div>
-                <div class="input-field col s12">
-                    <input id="password" type="password" maxlength="16" name="pass">
-                    <label for="password">Contraseña</label>
-                </div>
-                <div class="sub-form">
-                    <p>
-                        <span id="sign-in-validate"></span>
-                        <span style="display: none;" id="forgot-pass"><a href="#">¿Es posible que los haya olvidado?</a></span>
-                    </p>
-                    <button class="waves-effect waves-light btn" type="submit" id="send">Entrar</button>
-                </div>
-            </form>
-            <p><a id="reg-modal-dialog" href="#">¿Aún no tiene una cuenta?</a></p>
-            <span id="reg-success"></span>
-            <span id="session-expired"><?= isset($_GET["expired"]) ? "La sesión expiró. Inicie sesión nuevamente." : ""?></span>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 index-title">
+                <h1 class="title">Alarmovie</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 index-info">
+                <form id="sign-in-form" method="post">
+                    <div class="input-field col s12">
+                        <input id="user-id" type="text" maxlength="16" name="userId">
+                        <label for="password">Usuario</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="password" type="password" maxlength="16" name="pass">
+                        <label for="password">Contraseña</label>
+                    </div>
+                    <div class="sub-form">
+                        <p>
+                            <span id="sign-in-validate"></span>
+                            <span style="display: none;" id="forgot-pass"><a href="#">¿Es posible que los haya olvidado?</a></span>
+                        </p>
+                        <button class="waves-effect waves-light btn" type="submit" id="send">Entrar</button>
+                    </div>
+                </form>
+                <p><a id="reg-modal-dialog" href="#">¿Aún no tiene una cuenta?</a></p>
+                <span id="reg-success"></span>
+                <span id="session-expired"><?= isset($_GET["expired"]) ? "La sesión expiró. Inicie sesión nuevamente." : ""?></span>
+            </div>
         </div>
     </div>
     <div style="display: none;" id="pass-recovery">

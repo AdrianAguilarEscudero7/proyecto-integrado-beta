@@ -11,26 +11,44 @@
     require_once("../conex/Connection.php"); // Se importa la librería Connection.php
     $conex = getConnection("localhost", "alarmovie"); // Se obtiene conexión
 
-    $sql = "SELECT m.title, l.user_id, u.name, u.email FROM movies m, linked l, users u WHERE m.movie_id = l.movie_id AND l.user_id = u.user_id 
-        AND m.release_date = CURRENT_DATE";
-    $result = setSql($conex, $sql);
+    $sql2 = "SELECT last_email FROM send_email";
+    $result2 = setSql($conex, $sql2);
 
-    $moviesInfo = [];
-    $lastUser = "";
-    while ($row = $result->fetch_object()) {
-        if ($lastUser != $row->user_id && $lastUser != "") {
-            sendMail($moviesInfo);
-            $moviesInfo = [];
+    if ($result2->num_rows) {
+        $lastEmail = $result2->fetch_object()->last_email;
+        if (time() - strtotime($lastEmail) > 24*3600) {
+            generateAlarmMail($conex);
+            $sql4 = "UPDATE send_email SET last_email = '".date("Y-m-d", time())."' WHERE id = 1";
+            setSql($conex, $sql4);
         }
-        $lastUser = $row->user_id;
-        $array = [
-            "title" => $row->title,
-            "name" => $row->name,
-            "email" => $row->email
-        ];
-        $moviesInfo[] = $array;
+    } else {
+        generateAlarmMail($conex);
+        $sql3 = "INSERT INTO send_email (last_email) VALUES('".date("Y-m-d", time())."')";
+        setSql($conex, $sql3);
     }
-    sendMail($moviesInfo);
+
+    function generateAlarmMail($conex) {
+        $sql = "SELECT m.title, l.user_id, u.name, u.email FROM movies m, linked l, users u WHERE m.movie_id = l.movie_id AND l.user_id = u.user_id 
+            AND m.release_date = CURRENT_DATE";
+        $result = setSql($conex, $sql);
+
+        $moviesInfo = [];
+        $lastUser = "";
+        while ($row = $result->fetch_object()) {
+            if ($lastUser != $row->user_id && $lastUser != "") {
+                sendMail($moviesInfo);
+                $moviesInfo = [];
+            }
+            $lastUser = $row->user_id;
+            $array = [
+                "title" => $row->title,
+                "name" => $row->name,
+                "email" => $row->email
+            ];
+            $moviesInfo[] = $array;
+        }
+        sendMail($moviesInfo);
+    }
 
     function sendMail($moviesInfo) {
         $title = "";
